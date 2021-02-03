@@ -2,19 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\Commentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
     use HasFactory;
+    use Commentable;
 
     protected $guarded = [];
-
-    public function comments()
-    {
-        return $this->morphMany(Comment::class, 'commentable');
-    }
 
     public function routeCommentsForm()
     {
