@@ -13,6 +13,8 @@
         <section>
             <h2>Comments</h2>
 
+            @include('comments._form', ['comment' => $video->comments()->make()])
+
             @foreach($video->comments as $comment)
                 @include('comments._comment', ['comment' => $comment])
             @endforeach

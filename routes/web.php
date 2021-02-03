@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use App\Models\Video;
+use App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,7 @@ Route::middleware('auth')->group(function () {
             'video' => $video->load('comments'),
         ]);
     })->name('videos.show');
+
+    Route::post('posts/{post}/comments', [Controllers\PostCommentsController::class, 'store'])->name('posts.comments.store');
+    Route::post('videos/{video}/comments', [Controllers\VideoCommentsController::class, 'store'])->name('videos.comments.store');
 });

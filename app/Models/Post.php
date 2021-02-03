@@ -15,4 +15,9 @@ class Post extends Model
     {
         return $this->morphMany(Comment::class, 'commentable');
     }
+
+    public function routeCommentsForm()
+    {
+        return route('posts.comments.store', $this);
+    }
 }

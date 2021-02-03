@@ -13,6 +13,8 @@
         <section>
             <h2>Comments</h2>
 
+            @include('comments._form', ['comment' => $post->comments()->make()])
+
             @foreach($post->comments as $comment)
                 @include('comments._comment', ['comment' => $comment])
             @endforeach

@@ -20,4 +20,13 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function routeForm()
+    {
+        if ($this->exists) {
+            return route('comments.edit', $this);
+        }
+
+        return $this->commentable->routeCommentsForm();
+    }
 }
