@@ -21,6 +21,6 @@ trait Commentable
 
     protected function findCommentableOrFail()
     {
-        throw new RuntimeExceptionAlias('Must findCommentableOrFail must be implemented.');
+        throw new RuntimeExceptionAlias('The findCommentableOrFail method must be implemented.');
     }
 }
