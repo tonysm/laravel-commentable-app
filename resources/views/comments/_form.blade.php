@@ -14,6 +14,6 @@
     </div>
 
     <div>
-        <button type="submit">Create</button>
+        <button type="submit">{{ $comment->exists ? 'Update' : 'Create' }}</button>
     </div>
 </form>

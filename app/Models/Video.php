@@ -20,4 +20,9 @@ class Video extends Model
     {
         return route('videos.comments.store', $this);
     }
+
+    public function routeShow()
+    {
+        return route('videos.show', $this);
+    }
 }

@@ -20,4 +20,9 @@ class Post extends Model
     {
         return route('posts.comments.store', $this);
     }
+
+    public function routeShow()
+    {
+        return route('posts.show', $this);
+    }
 }

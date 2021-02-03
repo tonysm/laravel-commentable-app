@@ -24,9 +24,14 @@ class Comment extends Model
     public function routeForm()
     {
         if ($this->exists) {
-            return route('comments.edit', $this);
+            return route('comments.update', $this);
         }
 
         return $this->commentable->routeCommentsForm();
+    }
+
+    public function routeContentable()
+    {
+        return $this->commentable->routeShow();
     }
 }
