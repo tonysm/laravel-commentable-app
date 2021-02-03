@@ -9,25 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 Auth::loginUsingId(1);
 
-Route::get('/', function () {
-    return view('welcome', [
-        'posts' => Post::query()->latest()->get(),
-        'videos' => Video::query()->latest()->get(),
-    ]);
-})->name('welcome');
+Route::get('/', Controllers\WelcomeController::class)->name('welcome');
 
 Route::middleware('auth')->group(function () {
-    Route::get('posts/{post}', function (Post $post) {
-        return view('posts.show', [
-            'post' => $post->load('comments'),
-        ]);
-    })->name('posts.show');
-
-    Route::get('videos/{video}', function (Video $video) {
-        return view('videos.show', [
-            'video' => $video->load('comments'),
-        ]);
-    })->name('videos.show');
+    Route::get('posts/{post}', [Controllers\PostsController::class, 'show'])->name('posts.show');
+    Route::get('videos/{video}', [Controllers\VideosController::class, 'show'])->name('videos.show');
 
     Route::post('posts/{post}/comments', [Controllers\PostCommentsController::class, 'store'])->name('posts.comments.store');
     Route::post('videos/{video}/comments', [Controllers\VideoCommentsController::class, 'store'])->name('videos.comments.store');
